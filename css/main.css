@@ -1,3 +1,25 @@
 .copyright {
   font-size: 0.75em;
 }
+
+.navbar__list {
+  display: flex;
+  justify-content: right;
+  list-style-type: none;
+  margin: 1em 0;
+}
+
+.navbar__link {
+  margin: 0.3em 0;
+  background-color: burlywood;
+  padding: 1em
+}
+
+.navbar__link a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar__active {
+  background-color: peru;
+}
