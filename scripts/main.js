@@ -1,1 +1,0 @@
-import { getJournalEntries } from "./database";

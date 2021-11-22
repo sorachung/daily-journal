@@ -10,27 +10,70 @@
   <body>
     <header>
       <div class="logo">
-        <img src="../images/logo.png" alt="logo">
+        <img src="../images/logo.png" alt="logo" />
       </div>
       <div class="navbar">
         <ul class="navbar__list">
           <li class="navbar__link"><a href="../index.html">Home</a></li>
-          <li class="navbar__link"><a href="./my-entries.html">My Entries</a></li>
-          <li class="navbar__link navbar__active"><a href="./submit-entry.html">Submit Entry</a></li>
+          <li class="navbar__link">
+            <a href="./my-entries.html">My Entries</a>
+          </li>
+          <li class="navbar__link navbar__active">
+            <a href="./submit-entry.html">Submit Entry</a>
+          </li>
         </ul>
-      </div>    </header>
+      </div>
+    </header>
 
-    <main class="content">
-      
+    <main class="content" id="container">
+      <h2>Daily Journal</h2>
+      <form class="entryForm">
+        <fieldset>
+          <label for="entryDate">Date</label>
+          <input type="date" name="entryDate" class="entryForm__date" />
+        </fieldset>
+        <fieldset>
+          <label for="entryConcept">Concepts covered</label>
+          <input type="text" name="entryConcept" class="entryForm__concept" />
+        </fieldset>
+        <fieldset>
+          <label for="entryEntry">Journal Entry</label>
+          <textarea
+            name="entryEntry"
+            class="entryForm__entry"
+            placeholder="Enter your journal entry here..."
+          ></textarea>
+        </fieldset>
+        <fieldset> 
+          <label for="entryMood">Mood for the day</label>
+          <select id="entryMood">
+            <option value="happy">happy</option>
+            <option value="sad">sad</option>
+            <option value="frustrated">frustrated</option>
+            <option value="depressed">depressed</option>
+            <option value="exuberant">exuberant</option>
+            <option value="content">content</option>
+            <option value="Ok" selected>neutral</option>
+          </select>
+        </fieldset>
+        <button>Record Journal Entry</button>
+      </form>
+
+      <article id="entries"></article>
     </main>
 
     <footer>
       <div class="name-github">
-        <p>Visit So Chung's  <a href="https://github.com/sorachung" target="_blank">GitHub</a></p>
+        <p>
+          Visit So Chung's
+          <a href="https://github.com/sorachung" target="_blank">GitHub</a>
+        </p>
       </div>
       <div class="copyright">
-        <p>Copyright &copy; 2021, So Chung and Nashville Software
-          School. All Rights Reserved</p>
+        <p>
+          Copyright &copy; 2021, So Chung and Nashville Software School. All
+          Rights Reserved
+        </p>
       </div>
     </footer>
   </body>
