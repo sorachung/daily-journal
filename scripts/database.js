@@ -7,37 +7,7 @@
  */
 
 const database = {
-    "entries": [
-        {
-            id: 1,
-            date: "07/24/2025",
-            concept: "HTML & CSS",
-            entry: "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
-            mood: "Ok"
-        },
-        {
-            id: 2,
-            date: "07/25/2025",
-            concept: "Javascript variables",
-            entry: "We talked about variables in javascript and how to use them.",
-            mood: "Good"
-        },
-        {
-            id: 3,
-            date: "07/26/2025",
-            concept: "Javascript arrays",
-            entry: "We talked about what arrays are and how to use them in javascript",
-            mood: "Great"
-        },
-        {
-            id: 4,
-            date: "07/27/2025",
-            concept: "javascript for loops",
-            entry: "We talked about for loops and the syntax of them in javascript.",
-            mood: "frustrated"
-        },
-
-    ]
+    "entries": []
 }
 
 /*
@@ -47,4 +17,14 @@ const database = {
 export const getJournalEntries = () => {
     const copyOfData = database.entries.map(entry => ({...entry}))
     return copyOfData
+}
+
+
+export const getEntries = () => {
+    return fetch("http://localhost:8088/entries") // Fetch from the API
+        .then(response => response.json())  // Parse as JSON
+        .then(entries => { 
+            database.entries = entries;
+            // What should happen when we finally have the array?
+        })
 }
