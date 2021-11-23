@@ -7,12 +7,16 @@ import { getJournalEntries } from "./database.js"
 
 export const Entries = () => {
     const entries = getJournalEntries()
-    const allEntriesAsHTML = ""
+    let allEntriesAsHTML = ""
 
 
     for (const entry of entries) {
-        allEntriesAsHTML += `
-           Replace this with your HTML representation of a journal entry
+        allEntriesAsHTML += `<section class="entry">
+        <h2>${entry.concept}</h2>
+        <h3>${entry.date}</h3>
+        <p>${entry.entry}</p>
+        <p>I felt ${entry.mood}.</p>
+        </section>
         `
     }
 
