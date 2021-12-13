@@ -41,6 +41,20 @@
       "entry": "We learned how to sort arrays.",
       "mood": "content",
       "id": 6
+    },
+    {
+      "date": "2021-12-14",
+      "concept": "POST",
+      "entry": "We learned how to use the POST http request to add to our database",
+      "mood": "exuberant",
+      "id": 7
+    },
+    {
+      "date": "2021-12-14",
+      "concept": "PUT",
+      "entry": "We learned how to use the PUT http request to update our database",
+      "mood": "happy",
+      "id": 8
     }
   ]
 }

@@ -11,7 +11,7 @@ const applicationState = {
 }
 
 const API = `http://localhost:8088`
-const mainContainer = document.querySelector(".content");
+const mainContainer = document.querySelector(".container");
 
 /*
     You export a function that provides a version of the
