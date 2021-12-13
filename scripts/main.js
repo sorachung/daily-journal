@@ -1,10 +1,10 @@
 import { DailyJournal } from "./DailyJournal.js";
-import { getEntries } from "./database.js";
+import { fetchEntries } from "./dataAccess.js";
 
 const container = document.querySelector("#entries");
 
 const render = () => {
-  getEntries().then(() => container.innerHTML = DailyJournal())
+  fetchEntries().then(() => container.innerHTML = DailyJournal())
 };
 
 render();

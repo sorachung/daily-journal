@@ -3,7 +3,7 @@
     of the data? Import it on the following line of code
     and then invoke it on the third line of code.
 */
-import { getJournalEntries } from "./database.js"
+import { getJournalEntries } from "./dataAccess.js"
 
 export const Entries = () => {
     const entries = getJournalEntries()

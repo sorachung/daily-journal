@@ -6,7 +6,7 @@
  *      the entries for different purposes.
  */
 
-const database = {
+const applicationState = {
     "entries": []
 }
 
@@ -18,21 +18,21 @@ const mainContainer = document.querySelector("#content");
     raw data in the format that you want
 */
 export const getJournalEntries = () => {
-    const copyOfData = database.entries.map(entry => ({...entry}))
+    const copyOfData = applicationState.entries.map(entry => ({...entry}))
     return copyOfData
 }
 
 
-export const getEntries = () => {
+export const fetchEntries = () => {
     return fetch(`${API}/entries`) // Fetch from the API
         .then(response => response.json())  // Parse as JSON
         .then(entries => { 
-            database.entries = entries;
+            applicationState.entries = entries;
             // What should happen when we finally have the array?
         })
 }
 
-export const saveJournalEntry (newJournalEntry) => {
+export const saveJournalEntry = (newJournalEntry) => {
     // Use `fetch` with the POST method to add your entry to your API
     fetch(`${API}/entries`, {
         method: "POST",
