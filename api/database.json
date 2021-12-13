@@ -6,27 +6,41 @@
       "concept": "HTML & CSS",
       "entry": "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
       "mood": "Ok"
-  },
-  {
+    },
+    {
       "id": 2,
       "date": "07/25/2025",
       "concept": "Javascript variables",
       "entry": "We talked about variables in javascript and how to use them.",
       "mood": "Good"
-  },
-  {
+    },
+    {
       "id": 3,
       "date": "07/26/2025",
       "concept": "Javascript arrays",
       "entry": "We talked about what arrays are and how to use them in javascript",
       "mood": "Great"
-  },
-  {
+    },
+    {
       "id": 4,
       "date": "07/27/2025",
       "concept": "javascript for loops",
       "entry": "We talked about for loops and the syntax of them in javascript.",
       "mood": "frustrated"
-  }
+    },
+    {
+      "date": "2021-12-13",
+      "concept": "api",
+      "entry": "We learned about using our database through an API with a json-server",
+      "mood": "neutral",
+      "id": 5
+    },
+    {
+      "date": "2021-12-13",
+      "concept": "sorting arrays",
+      "entry": "We learned how to sort arrays.",
+      "mood": "content",
+      "id": 6
+    }
   ]
 }
