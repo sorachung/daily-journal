@@ -1,10 +1,11 @@
 import { DailyJournal } from "./DailyJournal.js";
-import { fetchEntries } from "./dataAccess.js";
+import { fetchEntries, fetchMoods } from "./dataAccess.js";
 
 const container = document.querySelector(".container");
 
 const render = () => {
-  fetchEntries().then(() => container.innerHTML = DailyJournal())
+  Promise.all([fetchEntries(), fetchMoods()])
+    .then(() => container.innerHTML = DailyJournal())
 };
 
 render();

@@ -15,7 +15,7 @@ export const Entries = () => {
         <h2>${entry.concept}</h2>
         <h3>${entry.date}</h3>
         <p>${entry.entry}</p>
-        <p>I felt ${entry.mood}.</p>
+        <p>I felt ${entry.mood.label}.</p>
         </section>
         `
     }

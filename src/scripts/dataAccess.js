@@ -7,7 +7,8 @@
  */
 
 const applicationState = {
-    "entries": []
+    "entries": [],
+    "moods": []
 }
 
 const API = `http://localhost:8088`
@@ -22,12 +23,23 @@ export const getJournalEntries = () => {
     return copyOfData
 }
 
+export const getMoods = () => applicationState.moods.map(mood => ({ ...mood }))
+
 
 export const fetchEntries = () => {
-    return fetch(`${API}/entries`) // Fetch from the API
+    return fetch(`${API}/entries?_expand=mood`) // Fetch from the API
         .then(response => response.json())  // Parse as JSON
         .then(entries => { 
             applicationState.entries = entries;
+            // What should happen when we finally have the array?
+        })
+}
+
+export const fetchMoods = () => {
+    return fetch(`${API}/moods`) // Fetch from the API
+        .then(response => response.json())  // Parse as JSON
+        .then(moods => { 
+            applicationState.moods = moods;
             // What should happen when we finally have the array?
         })
 }

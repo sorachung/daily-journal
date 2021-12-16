@@ -1,6 +1,7 @@
-import { saveJournalEntry } from "./dataAccess.js";
+import { saveJournalEntry, getMoods } from "./dataAccess.js";
 
 export const JournalForm = () => {
+  const moods = getMoods();
     return `
         <div class="field">
           <label for="entryDate">Date</label>
@@ -21,13 +22,10 @@ export const JournalForm = () => {
         <div class="field">
           <label for="entryMood">Mood for the day</label>
           <select id="entryMood">
-            <option value="happy">happy</option>
-            <option value="sad">sad</option>
-            <option value="frustrated">frustrated</option>
-            <option value="depressed">depressed</option>
-            <option value="exuberant">exuberant</option>
-            <option value="content">content</option>
-            <option value="neutral" selected>neutral</option>
+            ${moods.map((mood => {
+              return `<option value="${mood.id}">${mood.label}</option>`
+            })).join("")
+          }
           </select>
         </div>
         <button id="journalEntryBtn">Record Journal Entry</button>
@@ -44,13 +42,13 @@ document.addEventListener("click", (event) => {
         const journalEntry = document.querySelector(
             `textarea[name="entryEntry"]`
         ).value;
-        const mood = document.querySelector(`select[id="entryMood"]`).value;
+        const moodId = parseInt(document.querySelector(`select[id="entryMood"]`).value);
 
         const finishedEntry = {
           date: date,
           concept: concept,
           entry: journalEntry,
-          mood: mood
+          moodId: moodId
         }
 
         saveJournalEntry(finishedEntry)

@@ -55,9 +55,22 @@
       "entry": "We learned how to use the PUT http request to update our database",
       "moodId": 4,
       "id": 8
+    },
+    {
+      "date": "2021-12-16",
+      "concept": "deconstructing",
+      "entry": "We learned how to deconstruct an already existing website/project.",
+      "moodId": 7,
+      "id": 9
+    },
+    {
+      "date": "2021-12-16",
+      "concept": "collaborating",
+      "entry": "We did a group project today, where we had to collaborate with each other.",
+      "moodId": 1,
+      "id": 10
     }
   ],
-
   "moods": [
     {
       "id": 1,
@@ -91,6 +104,5 @@
       "id": 8,
       "label": "great"
     }
-
   ]
 }
