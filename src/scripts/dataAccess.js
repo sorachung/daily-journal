@@ -66,3 +66,10 @@ export const saveJournalEntry = (newJournalEntry) => {
             }
         )
 }
+
+export const deleteJournalEntry = (id) => {
+    fetch(`${API}/entries/${id}`, { method: "DELETE" })
+        .then( () => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}

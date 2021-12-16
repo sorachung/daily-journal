@@ -3,7 +3,7 @@
     of the data? Import it on the following line of code
     and then invoke it on the third line of code.
 */
-import { getJournalEntries } from "./dataAccess.js"
+import { deleteJournalEntry, getJournalEntries } from "./dataAccess.js"
 
 export const Entries = () => {
     const entries = getJournalEntries()
@@ -16,9 +16,19 @@ export const Entries = () => {
         <h3>${entry.date}</h3>
         <p>${entry.entry}</p>
         <p>I felt ${entry.mood.label}.</p>
+        <button name="deleteEntryBtn" id=${entry.id}>Delete Entry</button>
         </section>
         `
     }
 
     return allEntriesAsHTML
 }
+
+const mainContainer = document.querySelector(".container");
+
+mainContainer.addEventListener("click", event => {
+    if(event.target.name === "deleteEntryBtn") {
+        const currentEntryId = parseInt(event.target.id);
+        deleteJournalEntry(currentEntryId);
+    }
+})
