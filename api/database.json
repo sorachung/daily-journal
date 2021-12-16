@@ -5,56 +5,92 @@
       "date": "07/24/2025",
       "concept": "HTML & CSS",
       "entry": "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
-      "mood": "Ok"
+      "moodId": 1
     },
     {
       "id": 2,
       "date": "07/25/2025",
       "concept": "Javascript variables",
       "entry": "We talked about variables in javascript and how to use them.",
-      "mood": "Good"
+      "moodId": 3
     },
     {
       "id": 3,
       "date": "07/26/2025",
       "concept": "Javascript arrays",
       "entry": "We talked about what arrays are and how to use them in javascript",
-      "mood": "Great"
+      "moodId": 8
     },
     {
       "id": 4,
       "date": "07/27/2025",
       "concept": "javascript for loops",
       "entry": "We talked about for loops and the syntax of them in javascript.",
-      "mood": "frustrated"
+      "moodId": 7
     },
     {
       "date": "2021-12-13",
       "concept": "api",
       "entry": "We learned about using our database through an API with a json-server",
-      "mood": "neutral",
+      "moodId": 6,
       "id": 5
     },
     {
       "date": "2021-12-13",
       "concept": "sorting arrays",
       "entry": "We learned how to sort arrays.",
-      "mood": "content",
+      "moodId": 2,
       "id": 6
     },
     {
       "date": "2021-12-14",
       "concept": "POST",
       "entry": "We learned how to use the POST http request to add to our database",
-      "mood": "exuberant",
+      "moodId": 5,
       "id": 7
     },
     {
       "date": "2021-12-14",
       "concept": "PUT",
       "entry": "We learned how to use the PUT http request to update our database",
-      "mood": "happy",
+      "moodId": 4,
       "id": 8
     }
+  ],
+
+  "moods": [
+    {
+      "id": 1,
+      "label": "ok"
+    },
+    {
+      "id": 2,
+      "label": "content"
+    },
+    {
+      "id": 3,
+      "label": "good"
+    },
+    {
+      "id": 4,
+      "label": "happy"
+    },
+    {
+      "id": 5,
+      "label": "exuberant"
+    },
+    {
+      "id": 6,
+      "label": "neutral"
+    },
+    {
+      "id": 7,
+      "label": "frustrated"
+    },
+    {
+      "id": 8,
+      "label": "great"
+    }
+
   ]
 }
