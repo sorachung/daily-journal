@@ -1,0 +1,49 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background-color: burlywood;
+    margin: 0;
+    height: 5em;
+  }  
+
+.logo {
+height: inherit;
+}
+
+img {
+height: inherit;
+}
+
+.navbar {
+display: flex;
+justify-content: center;
+height: inherit;
+}
+
+.navbar__list {
+display: flex;
+justify-content: right;
+align-items: center;
+list-style-type: none;
+height: inherit;
+margin: 0;
+padding: 0;
+}
+
+.navbar__link {
+margin: 0.3em 0;
+background-color: burlywood;
+padding: 1em;
+}
+
+.navbar__link a {
+color: white;
+text-decoration: none;
+height: 1em;
+}
+
+.navbar__active {
+background-color: peru;
+}
+
