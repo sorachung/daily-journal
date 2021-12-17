@@ -8,11 +8,12 @@
 
 const applicationState = {
     "entries": [],
-    "moods": []
+    "moods": [],
+    "tags": [],
+    "entrytags": []
 }
 
-const filterState = {
-}
+const filterState = {}
 
 const API = `http://localhost:8088`
 const mainContainer = document.querySelector(".container");
@@ -27,6 +28,12 @@ export const getJournalEntries = () => {
 }
 
 export const getMoods = () => applicationState.moods.map(mood => ({ ...mood }))
+
+export const getTags = () => applicationState.tags.map(tag => ({ ...tag }))
+
+export const getEntrytags = () => applicationState.entrytags.map(entrytag => ({ ...entrytag }))
+
+
 
 export const getFilterState = () => ({ ...filterState })
 
