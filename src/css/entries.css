@@ -1,5 +1,7 @@
 .entryList {
-    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .entryCard {
@@ -7,10 +9,10 @@
     margin: 2em;
     padding: 2em;
     border-radius: 20px;
+    width: 50vw;
 }
 
 .deleteEntryBtn {
-    width: fit-content;
     padding: 0.7em;
     font-size: 1em;
     border-radius: 20px;
