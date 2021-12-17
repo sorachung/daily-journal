@@ -7,6 +7,7 @@
     height: fit-content;
     width: fit-content;
     padding: 1em 3em;
+    border-radius: 20px;
 }
   
 .field {
@@ -18,9 +19,18 @@
 
 #journalEntryBtn {
   width: fit-content;
-  padding: 0.5em;
+  padding: 0.7em;
   font-size: 1em;
   margin: 1em;
+  border-radius: 20px;
+  border: none;
+  background-color: darkred;
+  color: white;
+}
+
+#journalEntryBtn:hover {
+  background-color: firebrick;
+
 }
 
 .entryForm__entry {

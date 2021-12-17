@@ -11,12 +11,12 @@ export const Entries = () => {
 
 
     for (const entry of entries) {
-        allEntriesAsHTML += `<section class="entry">
+        allEntriesAsHTML += `<section class="entryCard">
         <h2>${entry.concept}</h2>
         <h3>${entry.date}</h3>
         <p>${entry.entry}</p>
         <p>I felt ${entry.mood.label}.</p>
-        <button name="deleteEntryBtn" id=${entry.id}>Delete Entry</button>
+        <button class="deleteEntryBtn" name="deleteEntryBtn" id=${entry.id}>Delete Entry</button>
         </section>
         `
     }
