@@ -69,6 +69,13 @@
       "entry": "We did a group project today, where we had to collaborate with each other.",
       "moodId": 1,
       "id": 10
+    },
+    {
+      "date": "2021-12-17",
+      "concept": "css",
+      "entry": "i learned that width:fit-content is bullshit",
+      "moodId": 7,
+      "id": 11
     }
   ],
   "moods": [

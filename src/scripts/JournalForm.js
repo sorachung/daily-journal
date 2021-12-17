@@ -22,6 +22,7 @@ export const JournalForm = () => {
         <div class="field">
           <label for="entryMood">Mood for the day</label>
           <select id="entryMood">
+            <option value="0">select a mood</option>
             ${moods.map((mood => {
               return `<option value="${mood.id}">${mood.label}</option>`
             })).join("")
@@ -35,22 +36,25 @@ export const JournalForm = () => {
 
 document.addEventListener("click", (event) => {
     if (event.target.id === "journalEntryBtn") {
-        const date = document.querySelector(`input[name="entryDate"]`).value;
-        const concept = document.querySelector(
-            `input[name="entryConcept"]`
-        ).value;
-        const journalEntry = document.querySelector(
-            `textarea[name="entryEntry"]`
-        ).value;
         const moodId = parseInt(document.querySelector(`select[id="entryMood"]`).value);
+        if(moodId !== 0) {
+          const date = document.querySelector(`input[name="entryDate"]`).value;
+          const concept = document.querySelector(
+              `input[name="entryConcept"]`
+          ).value;
+          const journalEntry = document.querySelector(
+              `textarea[name="entryEntry"]`
+          ).value;
+          
+          const finishedEntry = {
+            date: date,
+            concept: concept,
+            entry: journalEntry,
+            moodId: moodId
+          }
 
-        const finishedEntry = {
-          date: date,
-          concept: concept,
-          entry: journalEntry,
-          moodId: moodId
+          saveJournalEntry(finishedEntry)
         }
-
-        saveJournalEntry(finishedEntry)
+        
     }
 });
