@@ -11,6 +11,9 @@ const applicationState = {
     "moods": []
 }
 
+const filterState = {
+}
+
 const API = `http://localhost:8088`
 const mainContainer = document.querySelector(".container");
 
@@ -25,6 +28,9 @@ export const getJournalEntries = () => {
 
 export const getMoods = () => applicationState.moods.map(mood => ({ ...mood }))
 
+export const getFilterState = () => ({ ...filterState })
+
+export const setFilterState = (moodId) => filterState.moodId = moodId
 
 export const fetchEntries = () => {
     return fetch(`${API}/entries?_expand=mood`) // Fetch from the API

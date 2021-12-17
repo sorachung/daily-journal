@@ -3,12 +3,17 @@
     of the data? Import it on the following line of code
     and then invoke it on the third line of code.
 */
-import { deleteJournalEntry, getJournalEntries } from "./dataAccess.js"
+import { deleteJournalEntry, getFilterState, getJournalEntries } from "./dataAccess.js"
 
 export const Entries = () => {
-    const entries = getJournalEntries()
+    const filterState = getFilterState();
+    let entries = getJournalEntries()
     let allEntriesAsHTML = ""
-
+    if(filterState.hasOwnProperty("moodId") && filterState.moodId > 0) {
+        entries = entries.filter(entry => {
+            return entry.mood.id === filterState.moodId;
+        })
+    }
 
     for (const entry of entries) {
         allEntriesAsHTML += `<section class="entryCard">
