@@ -1,7 +1,8 @@
-import { saveJournalEntry, getMoods, getTags, saveTags, saveEntrytags } from "./dataAccess.js";
+import { saveJournalEntry, getMoods, getTags, saveTags, saveEntrytags, getinstructors } from "./dataAccess.js";
 
 export const JournalForm = () => {
   const moods = getMoods();
+  const instructors = getinstructors();
     return `
         <div class="field">
           <label for="entryDate">Date</label>
@@ -28,12 +29,21 @@ export const JournalForm = () => {
             })).join("")
           }
           </select>
-        </div>
-        <div class="field">
+          </div>
+          <div class="field">
+            <label for="entryInstructor">Instructor that helped</label>
+            <select id="entryInstructor">
+              <option value="0">select an instructor</option>
+              ${instructors.map(instructor => {
+                return `<option value="${instructor.id}">${instructor.firstName} ${instructor.lastName}</option>`
+              }).join("")}
+            </select>
+          </div>
+          <div class="field">
           <label for="entryTags">Tags</label>
           <input type="text" name="entryTags" class="entryForm__tags" />
-        </div>
-        <button id="journalEntryBtn">Record Journal Entry</button>
+          </div>
+          <button id="journalEntryBtn">Record Journal Entry</button>
  
   `;
 };
@@ -51,12 +61,14 @@ document.addEventListener("click", (event) => {
           const journalEntry = document.querySelector(
               `textarea[name="entryEntry"]`
           ).value;
+          const instructorId = parseInt(document.querySelector(`select[id="entryInstructor"]`).value);
+
           const tagsInput = document.querySelector(`input[name="entryTags"`).value
           let tagsInputArray = tagsInput.trim().split(",")
           if (tagsInputArray[tagsInputArray.length - 1] === '') {
             tagsInputArray.pop();
           }
-          tagsInputArray = tagsInputArray.map(tag => tag.trim());
+          tagsInputArray = tagsInputArray.map(tag => tag.toLowerCase().trim());
           let tags = getTags();
           const tagsPromisesArray = [];
           const entrytagsPromisesArray = [];
@@ -69,7 +81,8 @@ document.addEventListener("click", (event) => {
             date: date,
             concept: concept,
             entry: journalEntry,
-            moodId: moodId
+            moodId: moodId,
+            instructorId: instructorId
           }
 
           
@@ -86,7 +99,7 @@ document.addEventListener("click", (event) => {
               .then((entry) => {
                 tags = getTags();
                 tagsInputArray.forEach(tagInput => {
-                  const tagInputId = tags.find(tag => tag.subject === tagInput).id
+                  const tagInputId = tags.find(tag => tag.subject.toLowerCase() === tagInput).id
                   const newEntrytag = {
                     entryId: entry.id,
                     tagId: tagInputId

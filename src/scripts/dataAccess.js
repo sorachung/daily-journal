@@ -10,7 +10,8 @@ const applicationState = {
     "entries": [],
     "moods": [],
     "tags": [],
-    "entrytags": []
+    "entrytags": [],
+    "instructors": []
 }
 
 const filterState = {}
@@ -32,6 +33,8 @@ export const getMoods = () => applicationState.moods.map(mood => ({ ...mood }))
 export const getTags = () => applicationState.tags.map(tag => ({ ...tag }))
 
 export const getEntrytags = () => applicationState.entrytags.map(entrytag => ({ ...entrytag }))
+
+export const getinstructors = () => applicationState.instructors.map(instructor => ({ ...instructor }))
 
 
 
@@ -75,6 +78,14 @@ export const fetchEntrytags = () => {
         })
 }
 
+export const fetchInstructors = () => {
+    return fetch(`${API}/instructors`) // Fetch from the API
+        .then(response => response.json())  // Parse as JSON
+        .then(instructors => { 
+            applicationState.instructors = instructors;
+            // What should happen when we finally have the array?
+        })
+}
 
 
 export const saveJournalEntry = (newJournalEntry) => {
