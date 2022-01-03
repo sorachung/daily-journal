@@ -57,6 +57,26 @@ export const fetchMoods = () => {
         })
 }
 
+export const fetchTags = () => {
+    return fetch(`${API}/tags`) // Fetch from the API
+        .then(response => response.json())  // Parse as JSON
+        .then(tags => { 
+            applicationState.tags = tags;
+            // What should happen when we finally have the array?
+        })
+}
+
+export const fetchEntrytags = () => {
+    return fetch(`${API}/entrytags`) // Fetch from the API
+        .then(response => response.json())  // Parse as JSON
+        .then(entrytags => { 
+            applicationState.entrytags = entrytags;
+            // What should happen when we finally have the array?
+        })
+}
+
+
+
 export const saveJournalEntry = (newJournalEntry) => {
     // Use `fetch` with the POST method to add your entry to your API
     fetch(`${API}/entries`, {
@@ -79,6 +99,27 @@ export const saveJournalEntry = (newJournalEntry) => {
             }
         )
 }
+
+export const saveEntrytags = (newEntrytag) => {
+    return fetch(`${API}/entrytags`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newEntrytag)
+    })
+}
+
+export const saveTags = (newTag) => {
+    return fetch(`${API}/tags`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newTag)
+    })
+}
+
 
 export const deleteJournalEntry = (id) => {
     fetch(`${API}/entries/${id}`, { method: "DELETE" })
