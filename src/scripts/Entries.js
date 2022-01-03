@@ -3,7 +3,7 @@
     of the data? Import it on the following line of code
     and then invoke it on the third line of code.
 */
-import { deleteJournalEntry, getFilterState, getJournalEntries } from "./dataAccess.js"
+import { deleteJournalEntry, getEntrytags, getFilterState, getJournalEntries, getTags } from "./dataAccess.js"
 
 export const Entries = () => {
     const filterState = getFilterState();
@@ -15,12 +15,23 @@ export const Entries = () => {
         })
     }
 
+    const entrytags = getEntrytags();
+    const tags = getTags();
+
     for (const entry of entries) {
+        const foundEntrytags = entrytags.filter(entrytag => entrytag.entryId === entry.id);
+        const foundTags = tags.filter(tag => {
+            return foundEntrytags.find(entrytag => entrytag.tagId === tag.id)
+        })
+
         allEntriesAsHTML += `<section class="entryCard">
         <h2>${entry.concept}</h2>
         <h3>${entry.date}</h3>
         <p>${entry.entry}</p>
         <p>I felt ${entry.mood.label}.</p>
+        <ul class="tags">
+            ${foundTags.map(tag => `<li class="tags__item">${tag.subject}</li>`).join("")}
+        </ul>
         <button class="deleteEntryBtn" name="deleteEntryBtn" id=${entry.id}>Delete Entry</button>
         </section>
         `
