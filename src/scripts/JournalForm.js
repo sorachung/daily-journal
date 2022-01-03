@@ -1,4 +1,4 @@
-import { saveJournalEntry, getMoods } from "./dataAccess.js";
+import { saveJournalEntry, getMoods, getTags, saveTags, saveEntrytags } from "./dataAccess.js";
 
 export const JournalForm = () => {
   const moods = getMoods();
@@ -29,10 +29,16 @@ export const JournalForm = () => {
           }
           </select>
         </div>
+        <div class="field">
+          <label for="entryTags">Tags</label>
+          <input type="text" name="entryTags" class="entryForm__tags" />
+        </div>
         <button id="journalEntryBtn">Record Journal Entry</button>
  
   `;
 };
+
+const mainContainer = document.querySelector(".container")
 
 document.addEventListener("click", (event) => {
     if (event.target.id === "journalEntryBtn") {
@@ -45,6 +51,19 @@ document.addEventListener("click", (event) => {
           const journalEntry = document.querySelector(
               `textarea[name="entryEntry"]`
           ).value;
+          const tagsInput = document.querySelector(`input[name="entryTags"`).value
+          let tagsInputArray = tagsInput.trim().split(",")
+          if (tagsInputArray[tagsInputArray.length - 1] === '') {
+            tagsInputArray.pop();
+          }
+          tagsInputArray = tagsInputArray.map(tag => tag.trim());
+          let tags = getTags();
+          const tagsPromisesArray = [];
+          const entrytagsPromisesArray = [];
+
+          const uniqueTagsInputArray = tagsInputArray.filter(inputTag => {
+             return !tags.find(tag => tag.subject.toLowerCase() === inputTag.toLowerCase().trim())
+          })         
           
           const finishedEntry = {
             date: date,
@@ -53,7 +72,35 @@ document.addEventListener("click", (event) => {
             moodId: moodId
           }
 
-          saveJournalEntry(finishedEntry)
+          
+          uniqueTagsInputArray.forEach(tag => {
+            const newTag = {
+              subject: tag
+            }
+            tagsPromisesArray.push(saveTags(newTag))
+          })
+          Promise.all(tagsPromisesArray).then( () => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+            saveJournalEntry(finishedEntry)
+              .then(response => response.json())
+              .then((entry) => {
+                tags = getTags();
+                tagsInputArray.forEach(tagInput => {
+                  const tagInputId = tags.find(tag => tag.subject === tagInput).id
+                  const newEntrytag = {
+                    entryId: entry.id,
+                    tagId: tagInputId
+                  }
+                  entrytagsPromisesArray.push(saveEntrytags(newEntrytag))
+                })
+                Promise.all(entrytagsPromisesArray).then(() => {
+                  mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+                })
+               
+              })
+                
+          })
+          
         }
         
     }

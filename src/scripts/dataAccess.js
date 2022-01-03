@@ -79,25 +79,25 @@ export const fetchEntrytags = () => {
 
 export const saveJournalEntry = (newJournalEntry) => {
     // Use `fetch` with the POST method to add your entry to your API
-    fetch(`${API}/entries`, {
+    return fetch(`${API}/entries`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(newJournalEntry)
     })
-        .then(
-            (response) => {
-                //  Get all journal entries
-                response.json()
-            }
-        )
-        .then(
-            () => {
-                //  Broadcast the state change event
-                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
-            }
-        )
+        // .then(
+        //     (response) => {
+        //         //  Get all journal entries
+        //         response.json()
+        //     }
+        // )
+        // .then(
+        //     () => {
+        //         //  Broadcast the state change event
+        //         mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        //     }
+        // )
 }
 
 export const saveEntrytags = (newEntrytag) => {
